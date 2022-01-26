@@ -48,7 +48,7 @@ pipeline {
 				
 				withCredentials([sshUserPrivateKey(credentialsId: "ssh-key", keyFileVariable: 'keyfile')]) {
 					
-					sh 'cat keyfile' 
+					sh 'cat $keyfile' 
 			   }
             }
         }
