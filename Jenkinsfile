@@ -22,16 +22,22 @@ pipeline {
 // 				sh 'scp '
 // 		    }
 // 		}
-        stage('Example') {
+//         stage('Example') {
+//             steps {
+//                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+// 				echo "BUILD_NUMBER is ${env.BUILD_NUMBER}"
+// 				echo "BUILD_TAG is ${env.BUILD_TAG} "
+// 				echo "EXECUTOR_NUMBER is ${env.EXECUTOR_NUMBER} "
+// 				echo "JAVA_HOME is ${env.JAVA_HOME} "
+// 				echo "JOB_NAME is ${env.JOB_NAME} "
+// 				echo "NODE_NAME is ${env.NODE_NAME} "
+// 				echo "WORKSPACE is ${env.WORKSPACE} "
+//             }
+//         }
+		stage('Example') {
             steps {
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-				echo "BUILD_NUMBER is ${env.BUILD_NUMBER}"
-				echo "BUILD_TAG is ${env.BUILD_TAG} "
-				echo "EXECUTOR_NUMBER is ${env.EXECUTOR_NUMBER} "
-				echo "JAVA_HOME is ${env.JAVA_HOME} "
-				echo "JOB_NAME is ${env.JOB_NAME} "
-				echo "NODE_NAME is ${env.NODE_NAME} "
-				echo "WORKSPACE is ${env.WORKSPACE} "
+            	withCredentials([usernamePassword(credentialsId:'dockerlogin', passwordVariable: 'password', usernameVariable: 'username')])
+				echo "credentialsId = $credentialsId"
             }
         }
     
