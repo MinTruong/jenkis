@@ -22,11 +22,12 @@ pipeline {
 // 				sh 'scp '
 // 		    }
 // 		}
-		stage('Dockerfile'){
+        stage('Example') {
             steps {
-                sh 'systemctl status docker'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
+    
 // 		stage('Push_Jar_To_Nexus'){
 //             steps{
 //                 nexusPublisher nexusInstanceId: 'Nexus', nexusRepositoryId: 'MinhTH12-pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/lib/jenkins/workspace/my-pipeline/target/spring-petclinic-2.6.0-SNAPSHOT.jar']], mavenCoordinate: [artifactId: 'spring-petclinic', groupId: 'org.springframework.samples', packaging: 'jar', version: '2.6.0']]]
