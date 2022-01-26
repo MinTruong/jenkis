@@ -46,8 +46,8 @@ pipeline {
 				  echo "username is $USERNAME"
 				}
 				
-				withCredentials([sshUserPrivateKey(credentialsId: "yourkeyid", keyFileVariable: 'keyfile')]) {
-					echo "username is $yourkeyid"
+				withCredentials([sshUserPrivateKey(credentialsId: "ssh-key", keyFileVariable: 'keyfile')]) {
+					echo "username is $ssh-key"
 					echo keyfile
 			   }
             }
