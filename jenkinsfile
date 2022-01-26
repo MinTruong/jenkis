@@ -1,1 +1,14 @@
 
+pipeline {
+	agent any
+	tools {
+		maven "Maven"
+	}
+	stages {
+        stage('tesst'){
+            steps{
+                sh 'helo...'
+            }
+        }
+    }
+}
