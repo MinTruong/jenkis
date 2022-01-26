@@ -45,6 +45,11 @@ pipeline {
 				  // or inside double quotes for string interpolation
 				  echo "username is $USERNAME"
 				}
+				
+				withCredentials([sshUserPrivateKey(credentialsId: "yourkeyid", keyFileVariable: 'keyfile')]) {
+					echo "username is $yourkeyid"
+					echo keyfile
+			   }
             }
         }
     
