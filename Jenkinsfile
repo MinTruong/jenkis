@@ -36,10 +36,11 @@ pipeline {
 //         }
 		stage('Example') {
             steps {
-            	withCredentials([usernamePassword(credentialsId:'Nexus', passwordVariable: 'password', usernameVariable: 'username')])
-				echo "credentialsId = $credentialsId"
-				echo "pass = $passwordVariable"
-				echo "user = $username"
+            	withCredentials([usernamePassword(credentialsId:'Nexus', passwordVariable: 'password', usernameVariable: 'username')]){
+					echo "credentialsId = $credentialsId"
+					echo "pass = $passwordVariable"
+					echo "user = $username"
+				}
             }
         }
     
