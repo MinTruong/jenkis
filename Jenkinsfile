@@ -50,7 +50,7 @@ pipeline {
 					echo groupId
 					echo artifactId
 					echo env.WORKSPACE
-					sh 'echo ${env.WORKSPACE}'
+					
 // 					withCredentials([usernamePassword(credentialsId: 'Nexus-server', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 // 					sh 'curl -L -X GET "http://192.168.1.10:8081/service/rest/v1/search/assets/download?sort=version&repository=MinhTH12-pipeline&maven.groupId=$groupId&maven.artifactId=$artifactId&maven.extension=jar" -H "accept: application/json" --output ${env.WORKSPACE}/out.jar'
 // 					}
