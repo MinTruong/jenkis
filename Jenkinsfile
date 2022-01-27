@@ -5,8 +5,8 @@ pipeline {
 		maven "Maven"
 		jdk "jdk8"
 	}
-	
-// 	stages {
+
+	stages {
 // 		stage('Load file groovy') {
 // 			steps {
 //   				script {
@@ -58,18 +58,7 @@ pipeline {
 					
 					sh 'cat $keyfile' 
 			   }
-				
-// 				script {
-// 					check_ver = groovy.getVersionApp()
-// 					echo check_ver
-// 				}
-            }
-        }
-    
-// 		stage('Push_Jar_To_Nexus'){
-//             steps{
-//                 nexusPublisher nexusInstanceId: 'Nexus', nexusRepositoryId: 'MinhTH12-pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/lib/jenkins/workspace/my-pipeline/target/spring-petclinic-2.6.0-SNAPSHOT.jar']], mavenCoordinate: [artifactId: 'spring-petclinic', groupId: 'org.springframework.samples', packaging: 'jar', version: '2.6.0']]]
-//             }
-//         }
+			}
+		}
     }
 }
