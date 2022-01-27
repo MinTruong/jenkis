@@ -7,13 +7,13 @@ pipeline {
 	}
 
 	stages {
-// 		stage('Load file groovy') {
-// 			steps {
-//   				script {
-//     				groovy = load "code.groovy"
-//        				}
-// 				}
-// 		}
+		stage('Load file groovy') {
+			steps {
+  				script {
+    				groovy = load "code.groovy"
+       				}
+				}
+		}
 // 		stage('Pull_Code_Github') {
 // 		    steps {
 // 			// Get some code from a GitHub repository
@@ -58,6 +58,14 @@ pipeline {
 					
 					sh 'cat $keyfile' 
 			   }
+			}
+		}
+		stage('Version') {
+            steps {
+				scripct {
+					check_ver = groovy.getVersionApp()
+					echo check_ver
+				}
 			}
 		}
     }
