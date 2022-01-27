@@ -69,7 +69,7 @@ pipeline {
 		
 		stage('Build_Image') {
             steps {
-					sh "echo ${evn.WORKSPACE}\
+					sh "echo ${env.WORKSPACE}\
 					./test.sh\
 					sudo systemctl start docker\
 					docker build -t out"
