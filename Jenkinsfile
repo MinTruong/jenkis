@@ -55,16 +55,15 @@ pipeline {
 		stage('Pull_Jar_From_Neuxs') {
             steps {
 				script{
-					sh'''
-					#!/bin/bash
-					cat << EOF >test.json
-					{
-					  "insecure-registries" : ["http://192.168.1.10:9001"]
-					}
-					EOF
-
-					cat test.jso
-					'''
+					sh"
+						#!/bin/bash
+						cat << EOF >test.json
+						{
+						  "insecure-registries" : ["http://192.168.1.10:9001"]
+						}
+						EOF
+						cat test.json
+					"
 				}
 			}
 		}
