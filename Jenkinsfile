@@ -72,7 +72,7 @@ pipeline {
 					sh '''
 					echo &{evn.WORKSPACE}
 					./test.sh
-					systemctl start docker
+					sudo systemctl start docker
 					docker build -t out
 					'''
 			}
