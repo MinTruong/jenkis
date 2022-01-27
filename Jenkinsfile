@@ -1,10 +1,10 @@
 // def groovy
 pipeline {
 	agent any
-	tools {
-		maven "Maven"
-		jdk "jdk8"
-	}
+// 	tools {
+// 		maven "Maven"
+// 		jdk "jdk8"
+// 	}
 
 	stages {
 		stage('Load file groovy') {
@@ -52,17 +52,27 @@ pipeline {
 // 			}
 // 		}
 		
-		stage('Config_file') {
+// 		stage('Config_file') {
+//             steps {
+// 					sh '''
+// 					echo ahihihi
+// 					#!/bin/bash
+// 					cat << EOF>test.json 
+// 					{
+// 						"insecure-registries" : ["http://192.168.1.10:9001"]
+// 					}
+// 					EOF
+// 					cat test.json
+// 					'''
+// 			}
+// 		}
+		
+		stage('Build_Image') {
             steps {
 					sh '''
-					echo ahihihi
-					#!/bin/bash
-					cat << EOF >test.json\
-					{
-						"insecure-registries" : ["http://192.168.1.10:9001"]
-					}
-					EOF
-					cat test.json'''
+					systemctl start docker
+					docker build -t out
+					'''
 			}
 		}
 		
