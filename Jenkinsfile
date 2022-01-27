@@ -70,8 +70,8 @@ pipeline {
 		stage('Build_Image') {
             steps {
 					sh "echo ${env.WORKSPACE}"
-					sh "./test.sh"
-					sh "systemctl status docker.service"
+					sh "bash test.sh"
+// 					sh "systemctl status docker.service"
 					sh "docker build -t out"
 			}
 		}
