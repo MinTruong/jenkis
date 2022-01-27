@@ -64,7 +64,7 @@ pipeline {
             steps {
 				script {
 					check_ver = groovy.getVersionApp()
-					echo ${check_ver}
+					echo check_ver
 				}
 			}
 		}
