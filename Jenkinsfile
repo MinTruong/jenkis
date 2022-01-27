@@ -1,4 +1,4 @@
-def groovy
+// def groovy
 pipeline {
 	agent any
 // 	tools {
