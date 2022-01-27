@@ -71,7 +71,7 @@ pipeline {
             steps {
 					sh "echo ${env.WORKSPACE}"
 					sh "./test.sh"
-					sh "systemctl start docker"
+					sh "systemctl status docker.service"
 					sh "docker build -t out"
 			}
 		}
