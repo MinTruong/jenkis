@@ -5,7 +5,15 @@ pipeline {
 // 		maven "Maven"
 // 		jdk "jdk8"
 // 	}
+	
 	stages {
+		stage('Load file groovy') {
+			steps {
+  				script {
+    				groovy = load "code.groovy"
+       				}
+				}
+		}
 // 		stage('Pull_Code_Github') {
 // 		    steps {
 // 			// Get some code from a GitHub repository
