@@ -1,10 +1,10 @@
 // def groovy
 pipeline {
 	agent any
-// 	tools {
-// 		maven "Maven"
-// 		jdk "jdk8"
-// 	}
+	tools {
+		maven "Maven"
+		jdk "jdk8"
+	}
 	
 // 	stages {
 // 		stage('Load file groovy') {
