@@ -62,7 +62,7 @@ pipeline {
 		}
 		stage('Version') {
             steps {
-				scripct {
+				script {
 					check_ver = groovy.getVersionApp()
 					echo check_ver
 				}
