@@ -69,10 +69,10 @@ pipeline {
 		
 		stage('Build_Image') {
             steps {
-					sh "echo ${env.WORKSPACE}\
-					./test.sh\
-					sudo systemctl start docker\
-					docker build -t out"
+					sh "echo ${env.WORKSPACE}"
+					sh "./test.sh"
+					sh "sudo systemctl start docker"
+					sh "docker build -t out"
 			}
 		}
 		
