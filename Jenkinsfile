@@ -44,14 +44,11 @@ pipeline {
 //         }
 		stage('Example') {
             steps {
+				groupId="org.springframework.samples"
+				artifactId="spring-petclinic"
             	withCredentials([usernamePassword(credentialsId: 'Nexus-server', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-				  // available as an env variable, but will be masked if you try to print it out any which way
-				  // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
-				  sh 'echo $PASSWORD'
-				  // also available as a Groovy variable
-				  echo USERNAME
-				  // or inside double quotes for string interpolation
-				  echo "username is $USERNAME"
+					sh 'curl -L -X GET "http://192.168.1.10:8081/service/rest/v1/search/assets/download?sort=version&repository=MinhTH12-pipeline&maven.groupId=$groupId&maven.artifactId=$artifactId&maven.extension=jar" -H "accept: application/json" --output ${env.WORKSPACE}/out.jar'
+				
 				}
 			}
 		}
