@@ -80,8 +80,10 @@ pipeline {
             steps {
 				script {
 					nexusUrl="192.168.1.10:9001"
+					DOCKER_USERNAME="admin"
+					DOCKER_PASSWORD="Minh1ww9"
 					sh "bash ${env.WORKSPACE}/test.sh"
-					sh "docker login http://${nexusUrl}/repository/docker-minhth12/"
+					sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} http://${nexusUrl}/repository/docker-minhth12/"
 				}
 			}
 		}
