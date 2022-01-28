@@ -57,7 +57,7 @@ pipeline {
             steps {
                 script{
                     sh "sleep 10"
-                    sh 'curl -I 192.168.1.11:8080'
+                    sh 'curl  192.168.1.11:8080'
                 }
             }
         }
