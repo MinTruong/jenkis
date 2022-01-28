@@ -123,7 +123,6 @@ pipeline {
 		stage('Check_Health') {
             steps {
 					sh "curl -I 192.168.1.10:8080"
-				}
 			}
 		}
     }
