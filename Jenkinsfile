@@ -58,11 +58,6 @@ pipeline {
                 sh "curl -I 192.168.1.11:8080"
             }
         }
-        stage('Check_Health') {
-            steps {
-                sh "curl -I 192.168.1.11:8080"
-            }
-        }
     }
 }
 
