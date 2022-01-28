@@ -95,17 +95,37 @@ pipeline {
 // 			}
 // 		}
 		
-		stage('Push_Image') {
+// 		stage('Push_Image') {
+//             steps {
+// 				script{
+// 					ver=groovy.getVersionApp()
+// 					// should be use credential
+// 					sh "docker images"
+// 					sh "docker tag pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
+// 					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
+// 					sh "docker images"
+// 				}
+// 			}
+// 		}
+		
+		stage('Remote_Server_Build') {
             steps {
 				script{
 					ver=groovy.getVersionApp()
+					 withCredentials([sshUserPrivateKey(credentialsId: "sever", keyFileVariable: 'keyfile')]) {
+					 {
+						sh "scp -i ${keyfile} root@192.168.1.11"
+						sh "ls -la" 
+					 }
+				   
 					// should be use credential
-					sh "docker images"
-					sh "docker tag pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
-					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
-					sh "docker images"
+// 					sh "docker images"
+// 					sh "docker tag pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
+// 					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
+// 					sh "docker images"
 				}
 			}
 		}
+		
     }
 }
