@@ -91,9 +91,9 @@ pipeline {
 // 					sh "bash test.sh"
 // 					sh "systemctl status docker.service"
 // 					sh "docker build -t pet-${ver} ."
-				}
-			}
-		}
+// 				}
+// 			}
+// 		}
 		
 		stage('Push_Image') {
             steps {
