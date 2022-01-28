@@ -79,7 +79,7 @@ pipeline {
 		stage('Connect_Docker-Nexus') {
             steps {
 				script {
-					sh "cat ${env.WORKSPACE}/test.sh"
+					sh "bash ${env.WORKSPACE}/test.sh"
 				}
 			}
 		}
