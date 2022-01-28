@@ -1,4 +1,5 @@
-// def groovy
+def groovy
+def nexusUrl="192.168.1.10:9001"
 pipeline {
 	agent any
 // 	tools {
@@ -67,25 +68,46 @@ pipeline {
 // 			}
 // 		}
 		
-// 		stage('Build_Image') {
+
+		
+// 		stage('Connect_Docker-Nexus') {
 //             steps {
-// 					sh "echo ${env.WORKSPACE}"
-// 					sh "bash test.sh"
-// 					sh "systemctl status docker.service"
-// 					sh "docker build -t out ."
+// 				script {
+// 					// should be use credential 
+// 					DOCKER_USERNAME="admin"
+// 					DOCKER_PASSWORD="Minh1ww9"
+// 					sh "bash ${env.WORKSPACE}/test.sh"
+// 					sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} http://${nexusUrl}/repository/docker-minhth12/"
+// 				}
 // 			}
 // 		}
 		
-		stage('Connect_Docker-Nexus') {
+		stage('Build_Image') {
             steps {
-				script {
-					nexusUrl="192.168.1.10:9001"
-					DOCKER_USERNAME="admin"
-					DOCKER_PASSWORD="Minh1ww9"
-					sh "bash ${env.WORKSPACE}/test.sh"
-					sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} http://${nexusUrl}/repository/docker-minhth12/"
+					
+				script{
+					ver=getVersionApp()
+					
+					sh "bash test.sh"
+					sh "systemctl status docker.service"
+					echo ver
+					echo nexusUrl
+// 					sh "docker build -t out ."
 				}
 			}
 		}
+		
+// 		stage('Push_Image') {
+//             steps {
+// 				script {
+// 					// should be use credential 
+					
+// 					DOCKER_USERNAME="admin"
+// 					DOCKER_PASSWORD="Minh1ww9"
+// 					sh "bash ${env.WORKSPACE}/test.sh"
+// 					sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} http://${nexusUrl}/repository/docker-minhth12/"
+// 				}
+// 			}
+// 		}
     }
 }
