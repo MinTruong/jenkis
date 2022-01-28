@@ -82,27 +82,27 @@ pipeline {
 // 			}
 // 		}
 		
-		stage('Build_Image') {
-            steps {
+// 		stage('Build_Image') {
+//             steps {
 					
-				script{
-					ver=groovy.getVersionApp()
+// 				script{
+// 					ver=groovy.getVersionApp()
 					
-					sh "bash test.sh"
-					sh "systemctl status docker.service"
-					sh "docker build -t pet-${ver} ."
+// 					sh "bash test.sh"
+// 					sh "systemctl status docker.service"
+// 					sh "docker build -t pet-${ver} ."
 				}
 			}
 		}
 		
-// 		stage('Push_Image') {
-//             steps {
-// 				script {
-// 					// should be use credential
-// 					sh "docker pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
-// 					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
-// 				}
-// 			}
-// 		}
+		stage('Push_Image') {
+            steps {
+				script {
+					// should be use credential
+					sh "docker pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
+					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
+				}
+			}
+		}
     }
 }
