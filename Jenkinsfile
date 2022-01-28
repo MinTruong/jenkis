@@ -99,6 +99,7 @@ pipeline {
             steps {
 				script {
 					// should be use credential
+					sh "docker images"
 					sh "docker pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
 					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
 				}
