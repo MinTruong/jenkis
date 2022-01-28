@@ -112,11 +112,10 @@ pipeline {
             steps {
 				script{
 					ver=groovy.getVersionApp()
-					 withCredentials([sshUserPrivateKey(credentialsId: "server", keyFileVariable: 'keyfile')]) {
-						
-						sh "scp -i ${keyfile} ${env.WORKSPACE}/server.sh root@192.168.1.11:/root"
-						sh "ls -la" 
+					 withCredentials([sshUserPrivateKey(credentialsId: "server", keyFileVariable: 'keyfile')]) {	
+						sh "scp -i ${keyfile} ${env.WORKSPACE}/server.sh root@192.168.1.11:/root" 
 					 }
+					sh "sshpass -p Minh1ww9 ssh -o StrictHostKeyChecking=no root@192.168.1.11 pwd && ls -la"
 				   
 					// should be use credential
 // 					sh "docker images"
