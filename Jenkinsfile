@@ -5,15 +5,26 @@ pipeline {
 // 		maven "Maven"
 // 		jdk "jdk8"
 // 	}
-
-	stages {
-		stage('Load file groovy') {
-			steps {
-  				script {
-    				groovy = load "code.groovy"
-       				}
-				}
+	environment {
+        EXAMPLE_CREDS = credentials('Nexus-server')
+    }
+    stages {
+		stage('Example') {
+		    steps {
+			/* CORRECT */
+			sh('$EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW')
+		    }
 		}
+    }
+}
+// 	stages {
+// 		stage('Load file groovy') {
+// 			steps {
+//   				script {
+//     				groovy = load "code.groovy"
+//        				}
+// 				}
+// 		}
 // 		stage('Pull_Code_Github') {
 // 		    steps {
 // 			// Get some code from a GitHub repository
@@ -67,14 +78,14 @@ pipeline {
 // 			}
 // 		}
 		
-		stage('Build_Image') {
-            steps {
-					sh "echo ${env.WORKSPACE}"
-					sh "bash test.sh"
+// 		stage('Build_Image') {
+//             steps {
+// 					sh "echo ${env.WORKSPACE}"
+// 					sh "bash test.sh"
 // 					sh "systemctl status docker.service"
-					sh "docker build -t out ."
-			}
-		}
+// 					sh "docker build -t out ."
+// 			}
+// 		}
 		
 // 		stage('Version') {
 //             steps {
@@ -84,5 +95,5 @@ pipeline {
 // 				}
 // 			}
 // 		}
-    }
-}
+//     }
+// }
