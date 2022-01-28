@@ -114,7 +114,7 @@ pipeline {
 					ver=groovy.getVersionApp()
 					 withCredentials([sshUserPrivateKey(credentialsId: "server", keyFileVariable: 'keyfile')]) {
 						
-						sh "ssh -i ${keyfile} root@192.168.1.11"
+						sh "ssh -T -i ${keyfile} root@192.168.1.11"
 						sh "ls -la" 
 					 }
 				   
