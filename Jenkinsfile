@@ -5,26 +5,15 @@ pipeline {
 // 		maven "Maven"
 // 		jdk "jdk8"
 // 	}
-	environment {
-        EXAMPLE_CREDS = credentials('Nexus-server')
-    }
-    stages {
-		stage('Example') {
-		    steps {
-			/* CORRECT */
-			    sh("${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW}")
-		    }
+
+	stages {
+		stage('Load file groovy') {
+			steps {
+  				script {
+    				groovy = load "code.groovy"
+       				}
+				}
 		}
-    }
-}
-// 	stages {
-// 		stage('Load file groovy') {
-// 			steps {
-//   				script {
-//     				groovy = load "code.groovy"
-//        				}
-// 				}
-// 		}
 // 		stage('Pull_Code_Github') {
 // 		    steps {
 // 			// Get some code from a GitHub repository
@@ -87,13 +76,12 @@ pipeline {
 // 			}
 // 		}
 		
-// 		stage('Version') {
-//             steps {
-// 				script {
-// 					check_ver = groovy.getVersionApp()
-// 					echo check_ver
-// 				}
-// 			}
-// 		}
-//     }
-// }
+		stage('Connect_Docker-Nexus') {
+            steps {
+				script {
+					sh "cat ${env.WORKSPACE}/test.sh"
+				}
+			}
+		}
+    }
+}
