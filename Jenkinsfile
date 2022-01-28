@@ -88,7 +88,7 @@ pipeline {
 				script{
 					ver=groovy.getVersionApp()
 					
-					sh "bash test.sh"
+					sh "bash build_image.sh"
 					sh "systemctl status docker.service"
 					sh "docker build -t pet-${ver} ."
 				}
