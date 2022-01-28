@@ -76,7 +76,7 @@ pipeline {
 					// should be use credential 
 					DOCKER_USERNAME="admin"
 					DOCKER_PASSWORD="Minh1ww9"
-					sh "bash ${env.WORKSPACE}/test.sh"
+					sh "bash ${env.WORKSPACE}/build_image.sh"
 					sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} http://${nexusUrl}/repository/docker-minhth12/"
 				}
 			}
@@ -87,8 +87,6 @@ pipeline {
 					
 				script{
 					ver=groovy.getVersionApp()
-					
-					sh "bash build_image.sh"
 					sh "systemctl status docker.service"
 					sh "docker build -t pet-${ver} ."
 				}
