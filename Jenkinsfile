@@ -56,7 +56,7 @@ pipeline {
         stage('Check_Health') {
             steps {
                 sh "sleep 10"
-                sh "curl -I 192.168.1.11:8080"
+                sh 'curl -I 192.168.1.11:8080'
             }
         }
     }
