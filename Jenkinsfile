@@ -2,12 +2,7 @@ def groovy
 def nexusUrl="192.168.1.10:9001"
 pipeline {
 	agent any
-	stage('Check_Health') {
-		steps {
-			sh "curl -I 192.168.1.11:8080"
-		}
-	}
-}
+	
 
 // 	tools {
 // 		maven "Maven"
@@ -29,7 +24,7 @@ pipeline {
 	
 	
 	
-// 	stages {
+ 	stages {
 // 		stage('Load file groovy') {
 // 			steps {
 //   				script {
@@ -92,4 +87,10 @@ pipeline {
 // 				sh "curl -I 192.168.1.11:8080"
 // 			}
 // 		}
-//   }
+		stage('Check_Health') {
+			steps {
+				sh "curl -I 192.168.1.11:8080"
+			}
+		}
+	}
+}
