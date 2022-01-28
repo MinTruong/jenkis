@@ -31,9 +31,8 @@ pipeline {
     				groovy = load "code.groovy"
        				}
 				}
+			}
 		}
-
-		
 		stage('Connect_Docker-Nexus') {
             steps {
 				script {
@@ -45,10 +44,8 @@ pipeline {
 				}
 			}
 		}
-		
 		stage('Build_Image') {
-            steps {
-					
+            steps {	
 				script{
 					ver=groovy.getVersionApp()
 					sh "systemctl status docker.service"
@@ -56,7 +53,6 @@ pipeline {
 				}
 			}
 		}
-		
 		stage('Push_Image') {
             steps {
 				script{
@@ -69,7 +65,6 @@ pipeline {
 				}
 			}
 		}
-		
 		stage('Remote_Server_Build') {
             steps {
 				script{
@@ -81,7 +76,6 @@ pipeline {
 				}
 			}
 		}
-		
 		stage('Check_Health') {
             steps {
 				sh "curl -I 192.168.1.11:8080"
