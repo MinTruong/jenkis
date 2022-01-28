@@ -114,9 +114,7 @@ pipeline {
 					ver=groovy.getVersionApp()
 					 withCredentials([sshUserPrivateKey(credentialsId: "server", keyFileVariable: 'keyfile')]) {
 						
-						sh "ssh -T -i ${keyfile} root@192.168.1.11 << EOF
-						 ls -la
-						 EOF"
+						sh "scp -i ${keyfile} ${keyfile}/server.sh root@192.168.1.11:/root"
 						sh "ls -la" 
 					 }
 				   
