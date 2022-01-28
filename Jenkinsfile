@@ -97,11 +97,14 @@ pipeline {
 		
 		stage('Push_Image') {
             steps {
-				// should be use credential
-				sh "docker images"
-				sh "docker tag pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
-				sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
-				sh "docker images"
+				script{
+					ver=groovy.getVersionApp()
+					// should be use credential
+					sh "docker images"
+					sh "docker tag pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
+					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
+					sh "docker images"
+				}
 			}
 		}
     }
