@@ -79,7 +79,9 @@ pipeline {
 		stage('Connect_Docker-Nexus') {
             steps {
 				script {
+					nexusUrl="192.168.1.10:9001"
 					sh "bash ${env.WORKSPACE}/test.sh"
+					sh "docker login http://${nexusUrl}/repository/docker-minhth12/"
 				}
 			}
 		}
