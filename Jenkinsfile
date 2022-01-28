@@ -12,7 +12,7 @@ pipeline {
 		stage('Example') {
 		    steps {
 			/* CORRECT */
-			sh('$EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW')
+			    sh("${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW}")
 		    }
 		}
     }
