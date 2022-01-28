@@ -90,9 +90,7 @@ pipeline {
 					
 					sh "bash test.sh"
 					sh "systemctl status docker.service"
-					echo ver
-					echo nexusUrl
-// 					sh "docker build -t out ."
+					sh "docker build -t pet-${ver} ."
 				}
 			}
 		}
@@ -100,12 +98,9 @@ pipeline {
 // 		stage('Push_Image') {
 //             steps {
 // 				script {
-// 					// should be use credential 
-					
-// 					DOCKER_USERNAME="admin"
-// 					DOCKER_PASSWORD="Minh1ww9"
-// 					sh "bash ${env.WORKSPACE}/test.sh"
-// 					sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} http://${nexusUrl}/repository/docker-minhth12/"
+// 					// should be use credential
+// 					sh "docker pet-${ver} ${nexusUrl}/docker-minhth12/pet-${ver}"
+// 					sh "docker push ${nexusUrl}/docker-minhth12/pet-${ver}"
 // 				}
 // 			}
 // 		}
