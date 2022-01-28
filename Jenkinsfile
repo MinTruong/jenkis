@@ -86,7 +86,7 @@ pipeline {
             steps {
 					
 				script{
-					ver=getVersionApp()
+					ver=groovy.getVersionApp()
 					
 					sh "bash test.sh"
 					sh "systemctl status docker.service"
