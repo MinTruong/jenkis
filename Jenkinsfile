@@ -115,7 +115,7 @@ pipeline {
 					 withCredentials([sshUserPrivateKey(credentialsId: "server", keyFileVariable: 'keyfile')]) {	
 						sh "scp -i ${keyfile} ${env.WORKSPACE}/server.sh root@192.168.1.11:/root" 
 					 }
-					sh "sshpass -p Minh1ww9 ssh -o StrictHostKeyChecking=no root@192.168.1.11 pwd && hostnamectl"
+					sh "sshpass -p Minh1ww9 ssh -o StrictHostKeyChecking=no root@192.168.1.11 bash ./server.sh"
 				   
 					// should be use credential
 // 					sh "docker images"
